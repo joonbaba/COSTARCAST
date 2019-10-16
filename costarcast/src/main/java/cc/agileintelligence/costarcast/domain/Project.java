@@ -16,20 +16,20 @@ public class Project {
     private Long id;
     @NotBlank(message = "Project name is required")
     private String projectName;
-    @NotBlank(message = "Project identifier is required")
+    @NotBlank(message = "Project Identifier is required")
     @Size(min = 4, max = 5, message = "Please use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
-    @NotBlank(message = "Project description required")
+    @NotBlank(message = "Project description is required")
     private String description;
-    @JsonFormat(pattern = "mm-dd-yyyy")
-    private Date star_date;
-    @JsonFormat(pattern = "mm-dd-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+    private Date start_date;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
     private Date end_date;
-    @JsonFormat(pattern = "mm-dd-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
     private Date created_At;
-    @JsonFormat(pattern = "mm-dd-yyyy")
-    private Date update_At;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+    private Date updated_At;
 
     public Project() {
     }
@@ -66,12 +66,12 @@ public class Project {
         this.description = description;
     }
 
-    public Date getStar_date() {
-        return star_date;
+    public Date getStart_date() {
+        return start_date;
     }
 
-    public void setStar_date(Date star_date) {
-        this.star_date = star_date;
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
     }
 
     public Date getEnd_date() {
@@ -90,23 +90,21 @@ public class Project {
         this.created_At = created_At;
     }
 
-    public Date getUpdate_At() {
-        return update_At;
+    public Date getUpdated_At() {
+        return updated_At;
     }
 
-    public void setUpdate_At(Date update_At) {
-        this.update_At = update_At;
+    public void setUpdated_At(Date updated_At) {
+        this.updated_At = updated_At;
     }
 
     @PrePersist
-    protected void onCreated() {
+    protected void onCreate() {
         this.created_At = new Date();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.update_At = new Date();
+        this.updated_At = new Date();
     }
-
-
 }

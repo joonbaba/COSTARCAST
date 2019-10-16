@@ -11,7 +11,7 @@ public class ProjectService {
     @Autowired
     private ProjectRepositories projectRepository;
 
-    public Project saveOrupdateProject(Project project) {
+    public Project saveOrUpdateProject(Project project) {
 
         // Logic
 
