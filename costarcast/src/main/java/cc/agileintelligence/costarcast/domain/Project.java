@@ -1,7 +1,11 @@
 package cc.agileintelligence.costarcast.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -10,13 +14,21 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String prjectName;
-    private String project_Identifire;
+    @NotBlank(message = "Project name is required")
+    private String projectName;
+    @NotBlank(message = "Project identifier is required")
+    @Size(min = 4, max = 5, message = "Please use 4 to 5 characters")
+    @Column(updatable = false, unique = true)
+    private String projectIdentifier;
+    @NotBlank(message = "Project description required")
     private String description;
+    @JsonFormat(pattern = "mm-dd-yyyy")
     private Date star_date;
+    @JsonFormat(pattern = "mm-dd-yyyy")
     private Date end_date;
-
+    @JsonFormat(pattern = "mm-dd-yyyy")
     private Date created_At;
+    @JsonFormat(pattern = "mm-dd-yyyy")
     private Date update_At;
 
     public Project() {
@@ -30,20 +42,20 @@ public class Project {
         this.id = id;
     }
 
-    public String getPrjectName() {
-        return prjectName;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public void setPrjectName(String prjectName) {
-        this.prjectName = prjectName;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
-    public String getProject_Identifire() {
-        return project_Identifire;
+    public String getProjectIdentifier() {
+        return projectIdentifier;
     }
 
-    public void setProject_Identifire(String project_Identifire) {
-        this.project_Identifire = project_Identifire;
+    public void setProjectIdentifier(String projectIdentifier) {
+        this.projectIdentifier = projectIdentifier;
     }
 
     public String getDescription() {
