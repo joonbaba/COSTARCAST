@@ -1,26 +1,18 @@
-import React from "react";
-import logo from "./CoSTAR_Logo.svg";
-import "./App.css";
+import React, { Component } from "react"
+import "./App.css"
+import Dashboard from "./components/dashboard"
+import Header from "./components/layout/header"
+import "bootstrap/dist/css/bootstrap.min.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Abbas <code> src / App.js </code> Jannatpour{" "}
-        </p>{" "}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React{" "}
-        </a>{" "}
-      </header>{" "}
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Dashboard />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
